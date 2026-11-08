@@ -8,6 +8,15 @@ try {
     cart = [];
 }
 
+// LOAD SAVED ORDERS
+let orders = [];
+
+try {
+    orders = JSON.parse(localStorage.getItem("foodiesOrders")) || [];
+} catch (error) {
+    orders = [];
+}
+
 // ADD TO CART
 const addButtons = document.querySelectorAll(".add-to-cart");
 
@@ -95,6 +104,76 @@ document.getElementById("contactForm").addEventListener("submit", function (even
     this.reset();
 });
 
+// DISPLAY ORDER HISTORY
+function displayOrders() {
+    const orderHistory = document.getElementById("orderHistory");
+
+    if (!orderHistory) {
+        console.error("Order History section not found!");
+        return;
+    }
+
+    if (orders.length === 0) {
+        orderHistory.innerHTML = "<p>No orders yet.</p>";
+        return;
+    }
+
+    orderHistory.innerHTML = "";
+
+    orders.forEach(function (order) {
+        const orderCard = document.createElement("div");
+        orderCard.className = "order-card";
+
+        const heading = document.createElement("h3");
+        heading.textContent = "Order #" + order.id;
+
+        const date = document.createElement("p");
+        date.textContent = "Date: " + order.date;
+
+        const customer = document.createElement("p");
+        customer.textContent = "Customer: " + order.name;
+
+        const phone = document.createElement("p");
+        phone.textContent = "Phone: " + order.phone;
+
+        const address = document.createElement("p");
+        address.textContent = "Address: " + order.address;
+
+        const itemHeading = document.createElement("h4");
+        itemHeading.textContent = "Ordered Items:";
+
+        const itemList = document.createElement("ul");
+
+        order.items.forEach(function (item) {
+            const listItem = document.createElement("li");
+
+            listItem.textContent =
+                item.name + " × " + item.quantity +
+                " = ₹" + (item.price * item.quantity);
+
+            itemList.appendChild(listItem);
+        });
+
+        const total = document.createElement("h3");
+        total.textContent = "Total: ₹" + order.total;
+
+        const status = document.createElement("p");
+        status.textContent = "Status: " + order.status;
+
+        orderCard.appendChild(heading);
+        orderCard.appendChild(date);
+        orderCard.appendChild(customer);
+        orderCard.appendChild(phone);
+        orderCard.appendChild(address);
+        orderCard.appendChild(itemHeading);
+        orderCard.appendChild(itemList);
+        orderCard.appendChild(total);
+        orderCard.appendChild(status);
+
+        orderHistory.appendChild(orderCard);
+    });
+}
+
 // CHECKOUT FORM
 document.getElementById("checkoutForm").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -124,6 +203,24 @@ document.getElementById("checkoutForm").addEventListener("submit", function (eve
             " = ₹" + itemTotal + "\n";
     });
 
+    // CREATE NEW ORDER
+    const newOrder = {
+        id: Date.now(),
+        date: new Date().toLocaleString("en-IN"),
+        name: name,
+        phone: phone,
+        address: address,
+        items: JSON.parse(JSON.stringify(cart)),
+        total: total,
+        status: "Order Placed"
+    };
+
+    // SAVE ORDER IN LOCAL STORAGE
+    orders.unshift(newOrder);
+
+    localStorage.setItem("foodiesOrders", JSON.stringify(orders));
+
+    // SHOW CONFIRMATION
     const orderMessage = document.getElementById("orderMessage");
 
     orderMessage.innerHTML = `
@@ -134,15 +231,22 @@ document.getElementById("checkoutForm").addEventListener("submit", function (eve
         <p><strong>Your Order:</strong></p>
         <pre>${orderDetails}</pre>
         <h3>Total Bill: ₹${total}</h3>
+        <p>Order ID: ${newOrder.id}</p>
         <p>This is a demo order confirmation.</p>
     `;
 
+    // CLEAR CART
     cart = [];
     updateCart();
+
+    // UPDATE ORDER HISTORY
+    displayOrders();
+
     this.reset();
 
     alert("Your demo order has been placed successfully!");
 });
 
-// SHOW SAVED CART ON PAGE LOAD
+// SHOW SAVED CART AND ORDERS ON PAGE LOAD
 updateCart();
+displayOrders();
