@@ -1,4 +1,8 @@
 
+// BACKEND API URL
+const API_URL = "http://127.0.0.1:8000";
+
+
 // LOAD SAVED CART
 let cart = [];
 
@@ -8,14 +12,10 @@ try {
     cart = [];
 }
 
-// LOAD SAVED ORDERS
+
+// ORDERS WILL COME FROM BACKEND
 let orders = [];
 
-try {
-    orders = JSON.parse(localStorage.getItem("foodiesOrders")) || [];
-} catch (error) {
-    orders = [];
-}
 
 // ADD TO CART
 const addButtons = document.querySelectorAll(".add-to-cart");
@@ -41,6 +41,7 @@ addButtons.forEach(function (button) {
         alert(name + " added to cart!");
     });
 });
+
 
 // UPDATE CART AND SAVE
 function updateCart() {
@@ -74,6 +75,7 @@ function updateCart() {
     cartTotal.textContent = total;
 }
 
+
 // REMOVE ITEM
 document.getElementById("cartItems").addEventListener("click", function (event) {
     if (event.target.classList.contains("remove-item")) {
@@ -83,11 +85,13 @@ document.getElementById("cartItems").addEventListener("click", function (event) 
     }
 });
 
+
 // CLEAR CART
 document.getElementById("clearCart").addEventListener("click", function () {
     cart = [];
     updateCart();
 });
+
 
 // CONTACT FORM
 document.getElementById("contactForm").addEventListener("submit", function (event) {
@@ -104,7 +108,8 @@ document.getElementById("contactForm").addEventListener("submit", function (even
     this.reset();
 });
 
-// DISPLAY ORDER HISTORY
+
+// DISPLAY ORDERS FROM BACKEND
 function displayOrders() {
     const orderHistory = document.getElementById("orderHistory");
 
@@ -113,25 +118,26 @@ function displayOrders() {
         return;
     }
 
+    orderHistory.innerHTML = "";
+
     if (orders.length === 0) {
-        orderHistory.innerHTML = "<p>No orders yet.</p>";
+        orderHistory.textContent = "No orders yet.";
         return;
     }
-
-    orderHistory.innerHTML = "";
 
     orders.forEach(function (order) {
         const orderCard = document.createElement("div");
         orderCard.className = "order-card";
 
         const heading = document.createElement("h3");
-        heading.textContent = "Order #" + order.id;
+        heading.textContent = "Order #" + order.order_id;
 
         const date = document.createElement("p");
-        date.textContent = "Date: " + order.date;
+        date.textContent = "Date: " +
+            new Date(order.date).toLocaleString("en-IN");
 
         const customer = document.createElement("p");
-        customer.textContent = "Customer: " + order.name;
+        customer.textContent = "Customer: " + order.customer_name;
 
         const phone = document.createElement("p");
         phone.textContent = "Phone: " + order.phone;
@@ -174,8 +180,93 @@ function displayOrders() {
     });
 }
 
-// CHECKOUT FORM
-document.getElementById("checkoutForm").addEventListener("submit", function (event) {
+
+// FETCH ORDERS FROM SQLITE THROUGH FASTAPI
+async function loadOrders() {
+    const orderHistory = document.getElementById("orderHistory");
+
+    try {
+        const response = await fetch(API_URL + "/orders");
+
+        if (!response.ok) {
+            throw new Error("Could not fetch orders.");
+        }
+
+        const data = await response.json();
+
+        orders = data.orders || [];
+
+        displayOrders();
+
+    } catch (error) {
+        console.error("Order loading error:", error);
+
+        if (orderHistory) {
+            orderHistory.textContent =
+                "Unable to load orders. Please check whether backend server is running.";
+        }
+    }
+}
+
+
+// SHOW ORDER CONFIRMATION
+function showOrderConfirmation(order) {
+    const orderMessage = document.getElementById("orderMessage");
+
+    orderMessage.innerHTML = "";
+
+    const heading = document.createElement("h3");
+    heading.textContent = "🎉 Order Placed Successfully!";
+
+    const customer = document.createElement("p");
+    customer.textContent = "Thank you, " + order.customer_name + "!";
+
+    const mobile = document.createElement("p");
+    mobile.textContent = "Mobile: " + order.phone;
+
+    const address = document.createElement("p");
+    address.textContent = "Delivery Address: " + order.address;
+
+    const itemHeading = document.createElement("p");
+    itemHeading.textContent = "Your Order:";
+
+    const itemList = document.createElement("ul");
+
+    order.items.forEach(function (item) {
+        const li = document.createElement("li");
+
+        li.textContent =
+            item.name + " × " + item.quantity +
+            " = ₹" + (item.price * item.quantity);
+
+        itemList.appendChild(li);
+    });
+
+    const total = document.createElement("h3");
+    total.textContent = "Total Bill: ₹" + order.total;
+
+    const orderId = document.createElement("p");
+    orderId.textContent = "Order ID: " + order.order_id;
+
+    const status = document.createElement("p");
+    status.textContent = "Status: " + order.status;
+
+    orderMessage.append(
+        heading,
+        customer,
+        mobile,
+        address,
+        itemHeading,
+        itemList,
+        total,
+        orderId,
+        status
+    );
+}
+
+
+// CHECKOUT FORM - SEND ORDER TO BACKEND
+document.getElementById("checkoutForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
     if (cart.length === 0) {
@@ -192,61 +283,73 @@ document.getElementById("checkoutForm").addEventListener("submit", function (eve
         return;
     }
 
-    let total = 0;
-    let orderDetails = "";
-
-    cart.forEach(function (item) {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-
-        orderDetails += item.name + " x " + item.quantity +
-            " = ₹" + itemTotal + "\n";
-    });
-
-    // CREATE NEW ORDER
-    const newOrder = {
-        id: Date.now(),
-        date: new Date().toLocaleString("en-IN"),
+    const orderData = {
         name: name,
         phone: phone,
         address: address,
-        items: JSON.parse(JSON.stringify(cart)),
-        total: total,
-        status: "Order Placed"
+        items: cart.map(function (item) {
+            return {
+                name: item.name,
+                price: Number(item.price),
+                quantity: Number(item.quantity)
+            };
+        })
     };
 
-    // SAVE ORDER IN LOCAL STORAGE
-    orders.unshift(newOrder);
+    const submitButton = this.querySelector('[type="submit"]');
 
-    localStorage.setItem("foodiesOrders", JSON.stringify(orders));
+    if (submitButton) {
+        submitButton.disabled = true;
+    }
 
-    // SHOW CONFIRMATION
-    const orderMessage = document.getElementById("orderMessage");
+    try {
+        const response = await fetch(API_URL + "/orders", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(orderData)
+        });
 
-    orderMessage.innerHTML = `
-        <h3>🎉 Order Placed Successfully!</h3>
-        <p>Thank you, ${name}!</p>
-        <p><strong>Mobile:</strong> ${phone}</p>
-        <p><strong>Delivery Address:</strong> ${address}</p>
-        <p><strong>Your Order:</strong></p>
-        <pre>${orderDetails}</pre>
-        <h3>Total Bill: ₹${total}</h3>
-        <p>Order ID: ${newOrder.id}</p>
-        <p>This is a demo order confirmation.</p>
-    `;
+        const result = await response.json();
 
-    // CLEAR CART
-    cart = [];
-    updateCart();
+        if (!response.ok) {
+            throw new Error(result.detail || "Order could not be placed.");
+        }
 
-    // UPDATE ORDER HISTORY
-    displayOrders();
+        const newOrder = result.order;
 
-    this.reset();
+        // SHOW CONFIRMATION
+        showOrderConfirmation(newOrder);
 
-    alert("Your demo order has been placed successfully!");
+        // CLEAR CART ONLY AFTER SUCCESS
+        cart = [];
+        updateCart();
+
+        // RESET CHECKOUT FORM
+        this.reset();
+
+        // REFRESH ORDER HISTORY FROM DATABASE
+        await loadOrders();
+
+        alert("Your order has been placed successfully!");
+
+    } catch (error) {
+        console.error("Checkout error:", error);
+
+        alert(
+            "Unable to place order. Please check your backend server.\n" +
+            error.message
+        );
+
+    } finally {
+        if (submitButton) {
+            submitButton.disabled = false;
+        }
+    }
 });
 
-// SHOW SAVED CART AND ORDERS ON PAGE LOAD
+
+// INITIAL PAGE LOAD
 updateCart();
-displayOrders();
+loadOrders();

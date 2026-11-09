@@ -8,3 +8,8 @@ node_modules/
 Thumbs.db
 *.log
 
+
+venv/
+__pycache__/
+*.py[cod]
+foodies.db
