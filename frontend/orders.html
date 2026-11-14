@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FFF8F0">
+<title>Order history — Foodies Restaurant</title>
+<meta name="description" content="Track your Foodies Restaurant orders — order history, status and totals, straight from the kitchen.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/Fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/PlusJakartaSans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="loader" aria-hidden="true">
+  <div class="loader__plate"></div>
+  <div class="loader__text">Foodies</div>
+</div>
+
+<!-- ============================ Navigation ============================ -->
+<header class="nav" id="site-nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Foodies Restaurant — home">
+      <span class="brand__mark">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 3v6.5a2 2 0 0 0 4 0V3"/><path d="M9 9.5V21"/>
+          <path d="M16.5 3c-1.4 1.1-2 2.9-2 4.8 0 1.6.7 2.6 2 3.1V21"/>
+        </svg>
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">Foodies</span>
+        <span class="brand__sub">Restaurant</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="menu.html">Menu</a>
+      <a class="nav__link" href="index.html#offers">Offers</a>
+      <a class="nav__link" href="index.html#about">About</a>
+      <a class="nav__link" href="index.html#gallery">Gallery</a>
+      <a class="nav__link" href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="icon-btn" type="button" data-cart-open aria-label="Open cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/>
+          <path d="M2.5 3h2.2l2.3 12.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 7H6"/>
+        </svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </button>
+      <a class="btn btn--primary nav__cta" href="menu.html">Order now</a>
+      <button class="icon-btn nav__burger" type="button" data-burger aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+  <div class="mobile-menu__top">
+    <span class="brand__name">Foodies</span>
+    <button class="icon-btn" type="button" data-menu-close aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu__links" aria-label="Mobile">
+    <a class="mobile-menu__link" href="index.html">Home</a>
+    <a class="mobile-menu__link" href="menu.html">Menu</a>
+    <a class="mobile-menu__link" href="index.html#offers">Offers</a>
+    <a class="mobile-menu__link" href="index.html#about">About</a>
+    <a class="mobile-menu__link" href="index.html#gallery">Gallery</a>
+    <a class="mobile-menu__link" href="index.html#contact">Contact</a>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--primary btn--block" href="menu.html">Order now</a>
+    <div class="mobile-menu__meta">
+      <a href="tel:+912266778899">+91 22 6677 8899</a>
+      <a href="orders.html">Order history</a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Order history</span>
+      </nav>
+      <h1>Your orders</h1>
+      <p>Every order you have placed, with live kitchen status. Filter by the phone number you
+        ordered with, or view everything.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="orders-toolbar">
+        <div class="search" style="flex:1 1 320px;max-width:420px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
+            <path d="M4.5 3.5h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15.5 13.5l5 2v4a1.5 1.5 0 0 1-1.7 1.5C10.6 20.2 3.8 13.4 3 5.2A1.5 1.5 0 0 1 4.5 3.5Z"/>
+          </svg>
+          <input type="tel" id="orders-phone" placeholder="Filter by phone number" aria-label="Filter orders by phone number" inputmode="numeric" autocomplete="tel">
+          <button class="search__clear" type="button" data-phone-clear aria-label="Clear phone filter">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <button class="btn btn--dark btn--sm" type="button" data-refresh>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg>
+          Refresh
+        </button>
+
+        <a class="btn btn--ghost btn--sm" href="menu.html">Order again</a>
+      </div>
+
+      <div data-orders-summary></div>
+      <div class="orders-list" data-orders-list aria-live="polite"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================== Footer ============================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="index.html" aria-label="Foodies Restaurant — home">
+          <span class="brand__mark">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 3v6.5a2 2 0 0 0 4 0V3"/><path d="M9 9.5V21"/>
+              <path d="M16.5 3c-1.4 1.1-2 2.9-2 4.8 0 1.6.7 2.6 2 3.1V21"/>
+            </svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">Foodies</span>
+            <span class="brand__sub">Restaurant</span>
+          </span>
+        </a>
+        <p>Slow-cooked Indian classics and wood-fired favourites, served in Bandra West since 2012.</p>
+        <div class="socials">
+          <a class="social" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="social" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.2h2.5l.4-2.9h-2.9V9c0-.8.2-1.4 1.4-1.4h1.6V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2H8v2.9h2.3V21h3.2Z"/></svg>
+          </a>
+          <a class="social" href="https://x.com" target="_blank" rel="noopener" aria-label="X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.7 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.4 21H2.3l7.3-8.3L2 3h6.4l4.4 5.8L17.7 3Zm-1.1 16.1h1.7L7.5 4.8H5.7l10.9 14.3Z"/></svg>
+          </a>
+          <a class="social" href="https://wa.me/919820011223" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.7-.1a11 11 0 0 1-4-2.5 9 9 0 0 1-2-3c-.2-.6-.2-1.2 0-1.7.2-.4.8-1.1 1.1-1.2.3-.1.6-.1.8.1l1.1 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.1.3 0 .5.4.7 1.6 1.9 2.6 2.3.2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.8 1c.2.1.3.4.2.7Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <div class="footer__links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Full menu</a>
+          <a href="index.html#offers">Offers</a>
+          <a href="index.html#about">Our story</a>
+          <a href="orders.html">Order history</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Popular</h4>
+        <div class="footer__links">
+          <a href="menu.html?category=mains">Butter chicken</a>
+          <a href="menu.html?category=biryani">Hyderabadi biryani</a>
+          <a href="menu.html?category=starters">Paneer tikka</a>
+          <a href="menu.html?category=desserts">Gulab jamun</a>
+          <a href="menu.html?category=drinks">Mango lassi</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Kitchen hours</h4>
+        <div class="footer__hours">
+          <div><span>Mon – Thu</span><span>12:00 – 23:00</span></div>
+          <div><span>Fri – Sun</span><span>11:30 – 00:30</span></div>
+          <div><span>Last order</span><span>30 min before</span></div>
+        </div>
+        <p style="margin-top:1rem">16th Road, Bandra West, Mumbai 400050<br>
+          <a href="tel:+912266778899" style="color:#FFB273">+91 22 6677 8899</a></p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> Foodies Restaurant. All rights reserved.</span>
+      <span>Made with care in Mumbai · <a href="orders.html">Track your orders</a></span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" type="button" data-to-top aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/orders.js"></script>
+</body>
+</html>

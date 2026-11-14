@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FFF8F0">
+<title>Foodies Restaurant — Honest Indian food, cooked slowly</title>
+<meta name="description" content="Foodies Restaurant in Bandra West, Mumbai. Slow-cooked Indian classics, wood-fired pizza and desserts worth saving room for. Order online for delivery or pickup.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/Fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/PlusJakartaSans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Page loader -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__plate"></div>
+  <div class="loader__text">Foodies</div>
+</div>
+
+<!-- ============================ Navigation ============================ -->
+<header class="nav" id="site-nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Foodies Restaurant — home">
+      <span class="brand__mark">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 3v6.5a2 2 0 0 0 4 0V3"/><path d="M9 9.5V21"/>
+          <path d="M16.5 3c-1.4 1.1-2 2.9-2 4.8 0 1.6.7 2.6 2 3.1V21"/>
+        </svg>
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">Foodies</span>
+        <span class="brand__sub">Restaurant</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="menu.html">Menu</a>
+      <a class="nav__link" href="#offers">Offers</a>
+      <a class="nav__link" href="#about">About</a>
+      <a class="nav__link" href="#gallery">Gallery</a>
+      <a class="nav__link" href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="icon-btn" type="button" data-cart-open aria-label="Open cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/>
+          <path d="M2.5 3h2.2l2.3 12.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 7H6"/>
+        </svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </button>
+      <a class="btn btn--primary nav__cta" href="menu.html">
+        Order now
+        <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="icon-btn nav__burger" type="button" data-burger aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+  <div class="mobile-menu__top">
+    <span class="brand__name">Foodies</span>
+    <button class="icon-btn" type="button" data-menu-close aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu__links" aria-label="Mobile">
+    <a class="mobile-menu__link" href="index.html">Home</a>
+    <a class="mobile-menu__link" href="menu.html">Menu</a>
+    <a class="mobile-menu__link" href="#offers">Offers</a>
+    <a class="mobile-menu__link" href="#about">About</a>
+    <a class="mobile-menu__link" href="#gallery">Gallery</a>
+    <a class="mobile-menu__link" href="#contact">Contact</a>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--primary btn--block" href="menu.html">Order now</a>
+    <div class="mobile-menu__meta">
+      <a href="tel:+912266778899">+91 22 6677 8899</a>
+      <a href="orders.html">Order history</a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <!-- ============================== Hero ============================== -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__grain" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <span class="hero__chip"><span class="dot"></span> Open now · Bandra West, Mumbai</span>
+
+        <h1>Food worth <em>crossing town</em> for.</h1>
+
+        <p class="hero__lead">
+          A neighbourhood kitchen serving slow-cooked Indian classics, wood-fired pizza and
+          desserts worth saving room for. Everything made fresh, every single day — for dine-in,
+          delivery or pickup.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="menu.html">
+            Order now
+            <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#popular">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Explore the menu
+          </a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <strong data-count="14" data-suffix="+">14+</strong>
+            <span>Years of service</span>
+          </div>
+          <div class="hero__stat">
+            <strong data-count="25000" data-suffix="+">25,000+</strong>
+            <span>Happy guests</span>
+          </div>
+          <div class="hero__stat">
+            <strong data-count="4.9" data-decimals="1">4.9</strong>
+            <span>Average rating</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__media">
+        <div class="hero__ring" aria-hidden="true"></div>
+        <div class="hero__frame">
+          <img src="assets/img/hero.jpg" alt="Butter chicken served in a bowl with a swirl of cream and fresh coriander" width="1100" height="1400" fetchpriority="high">
+        </div>
+
+        <div class="float-card float-card--rating">
+          <span class="float-card__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+          </span>
+          <div>
+            <strong>4.9 / 5.0</strong>
+            <small>2,300+ verified reviews</small>
+          </div>
+        </div>
+
+        <div class="float-card float-card--delivery">
+          <span class="float-card__icon float-card__icon--green">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16V6h11v10"/><path d="M14 9h4l3 3.5V16h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>
+          </span>
+          <div>
+            <strong>Free delivery</strong>
+            <small>On orders above ₹999</small>
+          </div>
+        </div>
+
+        <div class="hero__badge" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <defs><path id="badgeCircle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+            <text fill="rgba(255,248,240,.55)" font-size="8.4" letter-spacing="2.6" font-family="'Plus Jakarta Sans',sans-serif">
+              <textPath href="#badgeCircle" startOffset="0">FRESH · DAILY · SINCE 2012 ·</textPath>
+            </text>
+          </svg>
+          <span>100%<small>Fresh</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ Trust strip ============================ -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip__track">
+      <span class="strip__item">Clay-oven cooking</span>
+      <span class="strip__item">Farm-fresh produce</span>
+      <span class="strip__item">12-hour slow gravies</span>
+      <span class="strip__item">Hand-rolled breads</span>
+      <span class="strip__item">No artificial colours</span>
+      <span class="strip__item">Clay-oven cooking</span>
+      <span class="strip__item">Farm-fresh produce</span>
+      <span class="strip__item">12-hour slow gravies</span>
+      <span class="strip__item">Hand-rolled breads</span>
+      <span class="strip__item">No artificial colours</span>
+    </div>
+  </div>
+
+  <!-- ========================== Popular dishes ========================== -->
+  <section class="section" id="popular">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Most loved</span>
+        <h2>The dishes people come back for</h2>
+        <p>Four plates that leave the kitchen more often than anything else. Tried, tested and
+          endlessly repeated by our regulars.</p>
+      </div>
+
+      <div class="dish-grid dish-grid--four" data-popular-dishes>
+        <!-- dish cards injected by home.js -->
+      </div>
+
+      <div style="text-align:center;margin-top:clamp(28px,3.5vw,44px)" class="reveal">
+        <a class="btn btn--dark" href="menu.html">
+          See the full menu
+          <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== Offers ============================== -->
+  <section class="section section--tight" id="offers">
+    <div class="container">
+      <div class="offer-wrap reveal reveal--scale">
+        <div class="offer">
+          <div class="offer__copy">
+            <span class="eyebrow eyebrow--light">Limited time</span>
+            <h2>Weekend feast, <em>30% off</em></h2>
+            <p>Order for two or more and take 30% off the entire bill — dine-in, delivery or pickup.
+              Valid on orders above ₹999, Friday to Sunday.</p>
+
+            <div class="coupon">
+              <span class="coupon__code">FOODIE30</span>
+              <button class="coupon__btn" type="button" data-copy-code="FOODIE30">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+                <span>Copy code</span>
+              </button>
+            </div>
+
+            <div class="countdown" data-countdown aria-label="Offer ends in">
+              <div class="countdown__box"><strong data-cd="days">00</strong><span>Days</span></div>
+              <div class="countdown__box"><strong data-cd="hours">00</strong><span>Hrs</span></div>
+              <div class="countdown__box"><strong data-cd="mins">00</strong><span>Min</span></div>
+              <div class="countdown__box"><strong data-cd="secs">00</strong><span>Sec</span></div>
+            </div>
+          </div>
+
+          <div class="offer__media">
+            <div class="offer__img">
+              <img src="assets/img/offer.jpg" alt="Wood-fired margherita pizza sliced on a plate" width="900" height="760" loading="lazy">
+            </div>
+            <div class="offer__stamp">30%<br>OFF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================== About =============================== -->
+  <section class="section" id="about">
+    <div class="container about">
+      <div class="about__media reveal reveal--left">
+        <div class="about__main">
+          <img src="assets/img/about.jpg" alt="Warmly lit dining room at Foodies Restaurant with laid tables at sunset" width="1100" height="1250" loading="lazy">
+        </div>
+        <div class="about__strip">
+          <img src="assets/img/story.jpg" alt="Paneer skewers grilling over charcoal" width="1200" height="700" loading="lazy">
+        </div>
+        <div class="about__years">
+          <div>
+            <strong>12</strong>
+            <small>Years</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="about__copy reveal reveal--right">
+        <span class="eyebrow">Our story</span>
+        <h2>A small kitchen with <span class="serif-italic">long memories</span></h2>
+        <p>
+          Foodies began in 2012 as a twelve-seat room off Carter Road, run by a family that
+          cooked the way they ate at home — slowly, generously, without shortcuts. The room is
+          bigger now, the menu a little longer, but the kitchen still works the same way.
+        </p>
+        <p>
+          Gravies are still simmered for hours. Breads are still rolled by hand and slapped into
+          a clay oven. Masalas are still ground in-house every morning, because the smell of
+          freshly roasted spice is the first thing we want you to notice.
+        </p>
+
+        <div class="about__points">
+          <div class="about__point">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Masalas ground in-house daily
+          </div>
+          <div class="about__point">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            No preservatives, no shortcuts
+          </div>
+          <div class="about__point">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Locally sourced produce
+          </div>
+          <div class="about__point">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Family recipes, unchanged
+          </div>
+        </div>
+
+        <div class="about__sign">
+          <div class="signature">
+            Meera &amp; Arjun Rao
+            <small>Founders</small>
+          </div>
+          <a class="btn btn--ghost btn--sm" href="#gallery">Step inside</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== Why choose us =========================== -->
+  <section class="section section--green why" id="why">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow eyebrow--light">Why Foodies</span>
+        <h2>Good food is a series of small decisions</h2>
+        <p>Four things we refuse to compromise on, no matter how busy the kitchen gets.</p>
+      </div>
+
+      <div class="why__grid">
+        <article class="why-card reveal" style="--d:.05s">
+          <div class="why-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 2.4 4 5 4 8a4 4 0 0 1-8 0c0-3 1-5.6 4-8Z"/><path d="M12 15v6"/><path d="M8.5 21h7"/></svg>
+          </div>
+          <h3>Cooked fresh, daily</h3>
+          <p>Nothing is pre-plated or reheated. Every gravy, bread and dessert is made on the day you eat it.</p>
+        </article>
+
+        <article class="why-card reveal" style="--d:.12s">
+          <div class="why-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16V6h11v10"/><path d="M14 9h4l3 3.5V16h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>
+          </div>
+          <h3>Delivered hot</h3>
+          <p>Insulated packaging and our own riders keep food above 60°C until it reaches your door.</p>
+        </article>
+
+        <article class="why-card reveal" style="--d:.19s">
+          <div class="why-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-4.4 7-10a7 7 0 1 0-14 0c0 5.6 7 10 7 10Z"/><circle cx="12" cy="11" r="2.6"/></svg>
+          </div>
+          <h3>Sourced nearby</h3>
+          <p>Vegetables from Nashik farms, paneer from a family dairy in Palghar, spices from Kochi.</p>
+        </article>
+
+        <article class="why-card reveal" style="--d:.26s">
+          <div class="why-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.3 1.1 6.1L12 16.9 6.7 19.8l1.1-6.1L3.3 9.4l6.1-.8Z"/></svg>
+          </div>
+          <h3>Loved by regulars</h3>
+          <p>A 4.9 average across 2,300+ reviews, and a guest book full of the same names every month.</p>
+        </article>
+      </div>
+
+      <div class="why__stats">
+        <div class="why__stat reveal"><strong data-count="15" data-suffix="">15</strong><span>Signature dishes</span></div>
+        <div class="why__stat reveal" style="--d:.08s"><strong data-count="25" data-suffix="min">25min</strong><span>Average delivery</span></div>
+        <div class="why__stat reveal" style="--d:.16s"><strong data-count="98" data-suffix="%">98%</strong><span>On-time orders</span></div>
+        <div class="why__stat reveal" style="--d:.24s"><strong data-count="2300" data-suffix="+">2,300+</strong><span>Five-star reviews</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== Testimonials =========================== -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="testi__head">
+        <div class="section-head reveal" style="margin-bottom:0">
+          <span class="eyebrow">Guest book</span>
+          <h2>What our guests say</h2>
+        </div>
+        <div class="rating-summary reveal" style="--d:.1s">
+          <strong>4.9</strong>
+          <div>
+            <div class="rating-summary__stars" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            </div>
+            <small>Based on 2,347 reviews</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee" data-testimonials>
+      <div class="marquee__track" data-testi-track>
+        <!-- testimonial cards injected by home.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= Gallery ============================= -->
+  <section class="section section--cream2" id="gallery">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">Inside Foodies</span>
+        <h2>A look around the room</h2>
+        <p>Low light, warm wood, and plates that leave the pass looking like this.</p>
+      </div>
+
+      <div class="gallery__grid" data-gallery>
+        <!-- gallery items injected by home.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= Contact ============================= -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Visit us</span>
+        <h2>Find us in Bandra West</h2>
+        <p>Walk in, call ahead, or order for delivery. We are a two-minute walk from Bandra station's west exit.</p>
+      </div>
+
+      <div class="contact">
+        <div class="contact__cards">
+          <div class="contact-card reveal">
+            <span class="contact-card__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-4.4 7-10a7 7 0 1 0-14 0c0 5.6 7 10 7 10Z"/><circle cx="12" cy="11" r="2.6"/></svg>
+            </span>
+            <div>
+              <h3>Address</h3>
+              <p>Shop 4, Sunrise Apartments,<br>16th Road, Bandra West,<br>Mumbai 400050</p>
+            </div>
+          </div>
+
+          <div class="contact-card reveal" style="--d:.06s">
+            <span class="contact-card__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+            </span>
+            <div>
+              <h3>Opening hours</h3>
+              <p>Monday – Thursday · 12:00 pm – 11:00 pm<br>
+                 Friday – Sunday · 11:30 am – 12:30 am</p>
+            </div>
+          </div>
+
+          <div class="contact-card reveal" style="--d:.12s">
+            <span class="contact-card__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 3.5h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15.5 13.5l5 2v4a1.5 1.5 0 0 1-1.7 1.5C10.6 20.2 3.8 13.4 3 5.2A1.5 1.5 0 0 1 4.5 3.5Z"/></svg>
+            </span>
+            <div>
+              <h3>Call or WhatsApp</h3>
+              <p><a href="tel:+912266778899">+91 22 6677 8899</a><br>
+                 <a href="https://wa.me/919820011223" target="_blank" rel="noopener">+91 98200 11223</a></p>
+            </div>
+          </div>
+
+          <div class="contact-card reveal" style="--d:.18s">
+            <span class="contact-card__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
+            </span>
+            <div>
+              <h3>Email</h3>
+              <p><a href="mailto:hello@foodies.example">hello@foodies.example</a></p>
+            </div>
+          </div>
+
+          <div class="contact__cta reveal" style="--d:.24s">
+            <a class="btn btn--primary" href="menu.html">Order online</a>
+            <a class="btn btn--ghost" href="tel:+912266778899">Reserve a table</a>
+          </div>
+        </div>
+
+        <div class="contact__map reveal reveal--right">
+          <iframe
+            title="Map showing Foodies Restaurant in Bandra West, Mumbai"
+            src="https://maps.google.com/maps?q=16th%20Road%20Bandra%20West%20Mumbai&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="contact__map-badge">
+            <span class="contact-card__icon" style="width:36px;height:36px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 21 3l-8 18-2-8-8-2Z"/></svg>
+            </span>
+            <div>
+              <strong>Foodies Restaurant</strong>
+              <small>16th Road, Bandra West · 2 min from the station</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================== Footer ============================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="index.html" aria-label="Foodies Restaurant — home">
+          <span class="brand__mark">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 3v6.5a2 2 0 0 0 4 0V3"/><path d="M9 9.5V21"/>
+              <path d="M16.5 3c-1.4 1.1-2 2.9-2 4.8 0 1.6.7 2.6 2 3.1V21"/>
+            </svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">Foodies</span>
+            <span class="brand__sub">Restaurant</span>
+          </span>
+        </a>
+        <p>Slow-cooked Indian classics and wood-fired favourites, served in Bandra West since 2012.</p>
+        <div class="socials">
+          <a class="social" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="social" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.2h2.5l.4-2.9h-2.9V9c0-.8.2-1.4 1.4-1.4h1.6V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2H8v2.9h2.3V21h3.2Z"/></svg>
+          </a>
+          <a class="social" href="https://x.com" target="_blank" rel="noopener" aria-label="X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.7 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.4 21H2.3l7.3-8.3L2 3h6.4l4.4 5.8L17.7 3Zm-1.1 16.1h1.7L7.5 4.8H5.7l10.9 14.3Z"/></svg>
+          </a>
+          <a class="social" href="https://wa.me/919820011223" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.7-.1a11 11 0 0 1-4-2.5 9 9 0 0 1-2-3c-.2-.6-.2-1.2 0-1.7.2-.4.8-1.1 1.1-1.2.3-.1.6-.1.8.1l1.1 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.1.3 0 .5.4.7 1.6 1.9 2.6 2.3.2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.8 1c.2.1.3.4.2.7Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <div class="footer__links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Full menu</a>
+          <a href="#offers">Offers</a>
+          <a href="#about">Our story</a>
+          <a href="orders.html">Order history</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Popular</h4>
+        <div class="footer__links">
+          <a href="menu.html?category=mains">Butter chicken</a>
+          <a href="menu.html?category=biryani">Hyderabadi biryani</a>
+          <a href="menu.html?category=starters">Paneer tikka</a>
+          <a href="menu.html?category=desserts">Gulab jamun</a>
+          <a href="menu.html?category=drinks">Mango lassi</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Kitchen hours</h4>
+        <div class="footer__hours">
+          <div><span>Mon – Thu</span><span>12:00 – 23:00</span></div>
+          <div><span>Fri – Sun</span><span>11:30 – 00:30</span></div>
+          <div><span>Last order</span><span>30 min before</span></div>
+        </div>
+        <p style="margin-top:1rem">16th Road, Bandra West, Mumbai 400050<br>
+          <a href="tel:+912266778899" style="color:#FFB273">+91 22 6677 8899</a></p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> Foodies Restaurant. All rights reserved.</span>
+      <span>Made with care in Mumbai · <a href="orders.html">Track your orders</a></span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" type="button" data-to-top aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
